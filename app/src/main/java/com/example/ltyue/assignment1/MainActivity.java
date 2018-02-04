@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String FILENAME = "subs.sav";
+//    private static final String FILENAME = "subs.sav";
     private ListView oldSubList;
 //    private String[] subs;
 
@@ -22,15 +22,23 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<String> subStrings = new ArrayList<String>();
 
+//    private int totalCost = 0;
+//
+//    private TextView tCost;
+
 //    private EditText name;
 //    private EditText date;
 //    private EditText cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        totalCost = 0;
         oldSubList = (ListView) findViewById(R.id.Subs);
+//        tCost = (TextView) findViewById(R.id.TotalCost);
 
         Bundle subData = getIntent().getExtras();
         if (subData != null){
@@ -45,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 //            Subscription newSub = new Subscription(name, date, cost);
 //            subList.add(newSub);
 //            ArrayList<String> subStrings = new ArrayList<String>();
+//            totalCost += cost;
+//            tCost.setText(totalCost);
+
             subStrings.add(name + '\n' + cost + '\n' + date);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, subStrings);

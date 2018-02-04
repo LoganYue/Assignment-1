@@ -30,8 +30,8 @@ public class New_Subscription extends AppCompatActivity {
         cost = (EditText) findViewById(R.id.subcost);
 //        Button saveButton = (Button) findViewById(R.id.createSub);
 
-        final Button button = findViewById(R.id.createSub);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button createSub = findViewById(R.id.createSub);
+        createSub.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 String message = "testing";

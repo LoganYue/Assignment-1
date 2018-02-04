@@ -8,27 +8,27 @@ import java.util.Date;
 
 public class Subscription {
 
-    private String sub_name;
+    private String name;
     private String date;
     private int cost;
     private String comment;
 
     //default constructor
     public Subscription(String sub_name, String date, int cost){
-        this.sub_name = sub_name;
+        this.name = sub_name;
         this.date = date;
         this.cost = cost;
     }
 
     //constructor w/ comment
     public Subscription(String sub_name, String date, int cost, String comment){
-        this.sub_name = sub_name;
+        this.name = sub_name;
         this.date = date;
         this.cost = cost;
         this.comment = comment;
     }
-    public String getSub_name(){
-        return this.sub_name;
+    public String getName(){
+        return this.name;
     }
 
     public String getDate(){
@@ -44,7 +44,7 @@ public class Subscription {
     }
 
     public void changeName(String name){
-        this.sub_name = name;
+        this.name = name;
         return;
     }
 
