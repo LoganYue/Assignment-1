@@ -15,19 +15,19 @@ public class New_Subscription extends AppCompatActivity {
     private EditText name;
     private EditText date;
     private EditText cost;
-    private EditText comment;
-    private String subname;
-    private String subdate;
-    private int subcost;
+//    private EditText comment;
+//    private String subname;
+//    private String subdate;
+//    private int subcost;
     private ArrayList<Subscription> subList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_subscription);
-        this.name = (EditText) findViewById(R.id.subname);
-        this.date = (EditText) findViewById(R.id.subdate);
-        this.cost = (EditText) findViewById(R.id.subcost);
+        name = (EditText) findViewById(R.id.subname);
+        date = (EditText) findViewById(R.id.subdate);
+        cost = (EditText) findViewById(R.id.subcost);
 //        Button saveButton = (Button) findViewById(R.id.createSub);
 
         final Button button = findViewById(R.id.createSub);
@@ -35,9 +35,21 @@ public class New_Subscription extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 String message = "testing";
-                TextView test = findViewById(R.id.test);
-                test.setText(message);
+                String subName = name.getText().toString();
+                String subDate = date.getText().toString();
+                int subCost = Integer.parseInt(cost.getText().toString());
 
+                //testing stuff
+                TextView test = findViewById(R.id.test);
+                test.setText(message + subName + subDate + subCost);
+
+                Intent main = new Intent(getApplicationContext(), MainActivity.class);
+                main.putExtra("subName", subName);
+                main.putExtra("subDate", subDate);
+                main.putExtra("subCost", subCost);
+                startActivity(main);
+                //Subscription newSub = new Subscription(subName, subDate, subCost);
+                //saveSub(newSub);
             }
         });
 

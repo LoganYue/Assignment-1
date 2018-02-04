@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,11 +29,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         oldSubList = (ListView) findViewById(R.id.Subs);
 
+        Bundle subData = getIntent().getExtras();
+        if (subData != null){
+            String name = subData.getString("subName");
+            String date = subData.getString("subDate");
+            int cost = subData.getInt("subCost");
+
+            //test case
+            TextView test = findViewById(R.id.textView2);
+            test.setText(name + cost + date);
+
+
+        }
+
     }
 
     public void createSub(View view) {
         Intent intent = new Intent(this, New_Subscription.class);
         startActivity(intent);
+    }
+
+    public void saveSub(Subscription newSub){
+
     }
 
 }
