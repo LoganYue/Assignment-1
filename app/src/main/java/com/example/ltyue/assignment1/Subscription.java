@@ -28,19 +28,19 @@ public class Subscription {
         this.comment = comment;
     }
     public String getSub_name(){
-        return sub_name;
+        return this.sub_name;
     }
 
     public String getDate(){
-        return date;
+        return this.date;
     }
 
     public int getCost(){
-        return cost;
+        return this.cost;
     }
 
     public String getComment(){
-        return comment;
+        return this.comment;
     }
 
     public void changeName(String name){

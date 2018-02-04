@@ -15,9 +15,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String FILENAME = "subs.sav";
     private ListView oldSubList;
+//    private String[] subs;
 
     private ArrayList<Subscription> subList;
     private ArrayAdapter<Subscription> adapter;
+
+    private ArrayList<String> subStrings = new ArrayList<String>();
 
 //    private EditText name;
 //    private EditText date;
@@ -36,11 +39,28 @@ public class MainActivity extends AppCompatActivity {
             int cost = subData.getInt("subCost");
 
             //test case
-            TextView test = findViewById(R.id.textView2);
-            test.setText(name + cost + date);
+//            TextView test = findViewById(R.id.textView2);
+//            test.setText(name + cost + date);
 
+//            Subscription newSub = new Subscription(name, date, cost);
+//            subList.add(newSub);
+//            ArrayList<String> subStrings = new ArrayList<String>();
+            subStrings.add(name + '\n' + cost + '\n' + date);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, subStrings);
 
+            oldSubList.setAdapter(adapter);
         }
+
+//        subs = new String[subList.size()];
+//        for (int i = 0; i < subList.size(); i++) {
+//            Subscription sub = subList.get(i);
+//            subs[i] = "a";
+//            subs[i] = sub.getSub_name() + "/n" + sub.getCost() + "/n" + sub.getDate();
+//        }
+//
+////        String[] testArray = new String[]{"yes", "no", "maybe so?"};
+
 
     }
 
@@ -49,8 +69,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void saveSub(Subscription newSub){
-
-    }
+//    @Override
+//    protected void onStart() {
+//        // TODO Auto-generated method stub
+//        super.onStart();
+//        this.subStrings = new ArrayList<String>();
+//
+//    }
 
 }
