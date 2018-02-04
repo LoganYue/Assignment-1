@@ -9,4 +9,6 @@
     <string name="sub_date">YYYY-MM-DD</string>
     <string name="sub_comment">Comment</string>
     <string name="create_sub">Create Subscription</string>
+    <string name="title_activity_edit_sub">editSub</string>
+    <string name="saveChanges">Save Changes</string>
 </resources>

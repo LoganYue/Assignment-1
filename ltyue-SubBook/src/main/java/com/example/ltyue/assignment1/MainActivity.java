@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -13,22 +14,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    private static final String FILENAME = "subs.sav";
     private ListView oldSubList;
-//    private String[] subs;
 
     private ArrayList<Subscription> subList;
     private ArrayAdapter<Subscription> adapter;
 
     private ArrayList<String> subStrings = new ArrayList<String>();
-
-//    private int totalCost = 0;
-//
-//    private TextView tCost;
-
-//    private EditText name;
-//    private EditText date;
-//    private EditText cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,41 +27,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        totalCost = 0;
         oldSubList = (ListView) findViewById(R.id.Subs);
-//        tCost = (TextView) findViewById(R.id.TotalCost);
 
-//        Bundle subData = getIntent().getExtras();
-//        if (subData != null){
-//            String name = subData.getString("subName");
-//            String date = subData.getString("subDate");
-//            int cost = subData.getInt("subCost");
+        //copied and adjusted from https://teamtreehouse.com/community/how-can-i-open-a-new-activity-when-an-item-is-clicked-on-in-the-listview
 
-        //test case
-//            TextView test = findViewById(R.id.textView2);
-//            test.setText(name + cost + date);
-
-//            Subscription newSub = new Subscription(name, date, cost);
-//            subList.add(newSub);
-//            ArrayList<String> subStrings = new ArrayList<String>();
-//            totalCost += cost;
-//            tCost.setText(totalCost);
-
-//            subStrings.add(name + '\n' + cost + '\n' + date);
-//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                    android.R.layout.simple_list_item_1, subStrings);
-
-//            oldSubList.setAdapter(adapter);
-//    }
-
-//        subs = new String[subList.size()];
-//        for (int i = 0; i < subList.size(); i++) {
-//            Subscription sub = subList.get(i);
-//            subs[i] = "a";
-//            subs[i] = sub.getSub_name() + "/n" + sub.getCost() + "/n" + sub.getDate();
-//        }
-//
-////        String[] testArray = new String[]{"yes", "no", "maybe so?"};
+        oldSubList.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent intent = new Intent(view.getContext(), EditSub.class);
+                        startActivity(intent);
+                    }
+                }
+        );
 
 
 
@@ -95,24 +64,16 @@ public class MainActivity extends AppCompatActivity {
                     String date = subData.getString("subDate");
                     int cost = subData.getInt("subCost");
 
-                    subStrings.add(name + '\n' + cost + '\n' + date);
+                    subStrings.add("Name:" + name + '\n' + "Cost:" + cost + '\n' + "Date:" + date);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                             android.R.layout.simple_list_item_1, subStrings);
 
                     oldSubList.setAdapter(adapter);
                 }
-//            if (resultCode == RESULT_CANCELED) {
-//                //Write your code if there's no result
+
             }
         }
     }
-
-//    @Override
-//    protected void onStart() {
-//        // TODO Auto-generated method stub
-//        super.onStart();
-//        this.subStrings = new ArrayList<String>();
-//
-//    }
+    
 
 }

@@ -15,10 +15,7 @@ public class New_Subscription extends AppCompatActivity {
     private EditText name;
     private EditText date;
     private EditText cost;
-//    private EditText comment;
-//    private String subname;
-//    private String subdate;
-//    private int subcost;
+
     private ArrayList<Subscription> subList;
 
     @Override
@@ -49,26 +46,10 @@ public class New_Subscription extends AppCompatActivity {
                 main.putExtra("subCost", subCost);
                 setResult(RESULT_OK, main);
                 finish();
-                //Subscription newSub = new Subscription(subName, subDate, subCost);
-                //saveSub(newSub);
+
             }
         });
 
     }
-
-//    public void CreateSub(View view) {
-//
-//        this.subname = this.name.getText().toString();
-//        this.subdate = this.date.getText().toString();
-//        this.subcost = Integer.parseInt(cost.getText().toString());
-//
-//        Subscription newSub = new Subscription(subname, subdate, subcost);
-//
-//        subList.add(newSub);
-////        Intent intent = new Intent(this, MainActivity.class);
-////        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-////        startActivity(intent);
-//
-//    }
 
 }
