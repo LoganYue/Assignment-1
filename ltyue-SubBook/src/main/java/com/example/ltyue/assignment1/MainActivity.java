@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private static final String FILENAME = "subs.sav";
+    //    private static final String FILENAME = "subs.sav";
     private ListView oldSubList;
 //    private String[] subs;
 
@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
         oldSubList = (ListView) findViewById(R.id.Subs);
 //        tCost = (TextView) findViewById(R.id.TotalCost);
 
-        Bundle subData = getIntent().getExtras();
-        if (subData != null){
-            String name = subData.getString("subName");
-            String date = subData.getString("subDate");
-            int cost = subData.getInt("subCost");
+//        Bundle subData = getIntent().getExtras();
+//        if (subData != null){
+//            String name = subData.getString("subName");
+//            String date = subData.getString("subDate");
+//            int cost = subData.getInt("subCost");
 
-            //test case
+        //test case
 //            TextView test = findViewById(R.id.textView2);
 //            test.setText(name + cost + date);
 
@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
 //            totalCost += cost;
 //            tCost.setText(totalCost);
 
-            subStrings.add(name + '\n' + cost + '\n' + date);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, subStrings);
+//            subStrings.add(name + '\n' + cost + '\n' + date);
+//            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                    android.R.layout.simple_list_item_1, subStrings);
 
-            oldSubList.setAdapter(adapter);
-        }
+//            oldSubList.setAdapter(adapter);
+//    }
 
 //        subs = new String[subList.size()];
 //        for (int i = 0; i < subList.size(); i++) {
@@ -73,11 +73,38 @@ public class MainActivity extends AppCompatActivity {
 ////        String[] testArray = new String[]{"yes", "no", "maybe so?"};
 
 
+
     }
 
     public void createSub(View view) {
         Intent intent = new Intent(this, New_Subscription.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
+
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                TextView test = findViewById(R.id.TotalCost);
+//                test.setText("after Return");
+
+                Bundle subData = data.getExtras();
+                if (subData != null) {
+                    String name = subData.getString("subName");
+                    String date = subData.getString("subDate");
+                    int cost = subData.getInt("subCost");
+
+                    subStrings.add(name + '\n' + cost + '\n' + date);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                            android.R.layout.simple_list_item_1, subStrings);
+
+                    oldSubList.setAdapter(adapter);
+                }
+//            if (resultCode == RESULT_CANCELED) {
+//                //Write your code if there's no result
+            }
+        }
     }
 
 //    @Override

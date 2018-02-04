@@ -52,8 +52,8 @@
     <ListView
         android:id="@+id/Subs"
         android:layout_width="fill_parent"
-        android:layout_height="415dp"
-        android:layout_marginBottom="32dp"
+        android:layout_height="450dp"
+        android:layout_marginBottom="36dp"
         android:layout_marginStart="4dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -43,11 +43,12 @@ public class New_Subscription extends AppCompatActivity {
                 TextView test = findViewById(R.id.test);
                 test.setText(message + subName + subDate + subCost);
 
-                Intent main = new Intent(getApplicationContext(), MainActivity.class);
+                Intent main = new Intent();
                 main.putExtra("subName", subName);
                 main.putExtra("subDate", subDate);
                 main.putExtra("subCost", subCost);
-                startActivity(main);
+                setResult(RESULT_OK, main);
+                finish();
                 //Subscription newSub = new Subscription(subName, subDate, subCost);
                 //saveSub(newSub);
             }
