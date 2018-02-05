@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/afs/ualberta.ca/home/l/t/ltyue/AndroidStudioProjects/ltyue-SubBook/Assignment-1/ltyue-SubBook/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "/afs/ualberta.ca/home/l/t/ltyue/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6434afcd3aedbff1adcdde132b1b090/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

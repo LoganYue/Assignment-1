@@ -1,0 +1,4 @@
+#Mon Feb 05 14:41:50 MST 2018
+base.0=/afs/ualberta.ca/home/l/t/ltyue/AndroidStudioProjects/ltyue-SubBook/Assignment-1/ltyue-SubBook/build/intermediates/transforms/dexMerger/debug/10
+path.0=classes.dex
+renamed.0=classes.dex

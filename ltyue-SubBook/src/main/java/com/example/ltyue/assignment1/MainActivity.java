@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) Logan Yue February 2018
+ *
+ * collaborated with Liam McDonald
+ * recieved assistance from Kevin DeHaan
+ */
+
 package com.example.ltyue.assignment1;
 
 
@@ -14,6 +21,15 @@ import android.widget.TextView;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ * Main activity displays a list of subscriptions and a new subscription button as well as a
+ * total cost tracker
+ *
+ * @author Logan Yue
+ * @see Subscription
+ * @see EditSub
+ * @see New_Subscription
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ListView oldSubList;
@@ -25,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int EDIT_SUB = 2;
 
+    /**
+     * generates the main page
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,8 +54,15 @@ public class MainActivity extends AppCompatActivity {
 
         oldSubList = (ListView) findViewById(R.id.Subs);
 
-        //copied and adjusted from https://teamtreehouse.com/community/how-can-i-open-a-new-activity-when-an-item-is-clicked-on-in-the-listview
+        updateScreen();
 
+        //copied and adjusted from https://teamtreehouse.com/community/how-can-i-open-a-new-activity-when-an-item-is-clicked-on-in-the-listview
+        /**
+         * interaction for moving to EditSub
+         *
+         * @see EditSub
+         * @see Subscription
+         */
         oldSubList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
@@ -60,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * interaction for moving to New_Subscription
+     * @param view
+     */
     public void createSub(View view) {
         Intent intent = new Intent(this, New_Subscription.class);
         startActivityForResult(intent, 1);
@@ -68,6 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        /**
+         * on returning from New_Subscription
+         *
+         * @see New_Subscription
+         * @see Subscription
+         */
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
 //                TextView test = findViewById(R.id.TotalCost);
@@ -97,6 +135,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        /**
+         * on returning from EditSub
+         *
+         * @see EditSub
+         * @see Subscription
+         */
         if (requestCode == EDIT_SUB) {
 
             int arrayIndex = Integer.parseInt(data.getStringExtra("arrayIndex"));
@@ -126,6 +170,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * updates the listview and total cost
+     */
     private void updateScreen() {
 
         double totalCost = 0.00;

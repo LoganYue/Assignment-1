@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Logan Yue February 2018
+ */
+
 package com.example.ltyue.assignment1;
 
 import android.content.Intent;
@@ -7,6 +11,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Allows the user to edit a previously created subscription
+ *
+ * @author Logan Yue
+ * @see MainActivity
+ */
 public class EditSub extends AppCompatActivity {
 
     private EditText nameBox;
@@ -19,6 +29,10 @@ public class EditSub extends AppCompatActivity {
     private String cost;
     private String comment;
 
+    /**
+     * occurs on page creation
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +55,12 @@ public class EditSub extends AppCompatActivity {
         dateBox.setText(date);
         commentBox.setText(comment);
 
-
+        /**
+         * occurs on saveChanges button press
+         *
+         * passes data from text boxes to MainActivity and finishes activity
+         * @see MainActivity
+         */
         final Button editSub = findViewById(R.id.saveChanges);
 
         editSub.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +85,12 @@ public class EditSub extends AppCompatActivity {
             }
         });
 
+        /**
+         * occurs on delete button press
+         *
+         * passes a delete request to MainActivity and finishes activity
+         * @see MainActivity
+         */
         final Button deleteSub = findViewById(R.id.delete);
 
         deleteSub.setOnClickListener(new View.OnClickListener(){
