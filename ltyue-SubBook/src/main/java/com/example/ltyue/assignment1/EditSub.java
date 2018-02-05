@@ -14,10 +14,10 @@ public class EditSub extends AppCompatActivity {
     private EditText costBox;
     private EditText commentBox;
     private String arrayIndex;
-    private Intent intent;
     private String name;
     private String date;
     private String cost;
+    private String comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +29,17 @@ public class EditSub extends AppCompatActivity {
         name = intent.getStringExtra("name");
         date = intent.getStringExtra("date");
         cost = intent.getStringExtra("cost");
-
+        comment = intent.getStringExtra("comment");
 
         nameBox = (EditText) findViewById(R.id.nameBox);
         costBox = (EditText) findViewById(R.id.costBox);
         dateBox = (EditText) findViewById(R.id.dateBox);
+        commentBox = (EditText) findViewById(R.id.commentBox);
 
         nameBox.setText(name);
         costBox.setText(cost);
         dateBox.setText(date);
+        commentBox.setText(comment);
 
 
         final Button editSub = findViewById(R.id.saveChanges);
@@ -48,11 +50,13 @@ public class EditSub extends AppCompatActivity {
                 String newName = nameBox.getText().toString();
                 String newCost = costBox.getText().toString();
                 String newDate = dateBox.getText().toString();
+                String newComment = commentBox.getText().toString();
 
                 Intent main = new Intent();
                 main.putExtra("name", newName);
                 main.putExtra("cost", newCost);
                 main.putExtra("date", newDate);
+                main.putExtra("comment", newComment);
                 main.putExtra("arrayIndex", arrayIndex);
                 main.putExtra("delete", "0");
                 setResult(2,main);

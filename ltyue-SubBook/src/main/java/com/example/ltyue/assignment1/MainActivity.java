@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("name", ((Subscription) sub).getName());
                         intent.putExtra("cost", String.valueOf(((Subscription) sub).getCost()));
                         intent.putExtra("date", ((Subscription) sub).getDate());
+                        intent.putExtra("comment", ((Subscription) sub).getComment());
                         intent.putExtra("arrayIndex", String.valueOf(position));
 //                        Gson gson = new Gson();
 //                        gsonSub = gson.toJson(editSub);
@@ -81,14 +82,20 @@ public class MainActivity extends AppCompatActivity {
                 if (subData != null) {
                     String name = subData.getString("subName");
                     String date = subData.getString("subDate");
-                    int cost = subData.getInt("subCost");
+                    double cost = subData.getDouble("subCost");
+                    String comment = subData.getString("subComment");
 
-                    Subscription sub = new Subscription(name, date, cost);
-                    this.subList.add(sub);
+                    if (comment != ""){
 
-//                    subStrings.add("Name: " + name + '\n' + "Cost: " + cost + '\n' + "Date: " + date);
-//                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                            android.R.layout.simple_list_item_1, subStrings);
+                        Subscription sub = new Subscription(name, date, cost, comment);
+                        this.subList.add(sub);
+
+                    } else {
+
+                        Subscription sub = new Subscription(name, date, cost);
+                        this.subList.add(sub);
+                    }
+
                     updateScreen();
                 }
 
@@ -106,13 +113,15 @@ public class MainActivity extends AppCompatActivity {
 
                 String name = data.getStringExtra("name");
                 String date = data.getStringExtra("date");
-                int cost = Integer.parseInt(data.getStringExtra("cost"));
+                double cost = Double.parseDouble(data.getStringExtra("cost"));
+                String comment = data.getStringExtra("comment");
                 Object sub = oldSubList.getItemAtPosition(arrayIndex);
                 Subscription editSub = (Subscription) sub;
 
                 editSub.setName(name);
                 editSub.setDate(date);
                 editSub.setCost(cost);
+                editSub.setComment(comment);
 
                 subList.set(arrayIndex, editSub);
             }
@@ -124,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateScreen() {
 
-        int totalCost = 0;
+        double totalCost = 0.00;
         TextView costBox = findViewById(R.id.TotalCost);
 
         for (int i = 0; i < subList.size(); i++){
@@ -133,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        costBox.setText(String.valueOf(totalCost));
+        costBox.setText(String.valueOf("$" + totalCost));
 
         adapter = new ArrayAdapter<Subscription>(this,
                 android.R.layout.simple_list_item_1, subList);

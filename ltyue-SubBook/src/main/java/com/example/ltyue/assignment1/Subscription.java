@@ -10,18 +10,18 @@ public class Subscription {
 
     private String name;
     private String date;
-    private int cost;
-    private String comment = "default comment";
+    private double cost;
+    private String comment = "";
 
     //default constructor
-    public Subscription(String subName, String date, int cost){
+    public Subscription(String subName, String date, double cost){
         this.name = subName;
         this.date = date;
         this.cost = cost;
     }
 
     //constructor w/ comment
-    public Subscription(String subName, String date, int cost, String comment){
+    public Subscription(String subName, String date, double cost, String comment){
         this.name = subName;
         this.date = date;
         this.cost = cost;
@@ -44,11 +44,11 @@ public class Subscription {
         this.date = date;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 
@@ -64,6 +64,14 @@ public class Subscription {
 
     @Override
     public String toString() {
-        return "Name: " + this.name + '\n' + "Cost: " + this.cost + '\n' + "Date: " + this.date;
+        if (comment != ""){
+
+            return "Name: " + this.name + '\n' + "Cost: " + this.cost + '\n' +
+                    "Date: " + this.date + '\n' + this.comment;
+        } else {
+
+            return "Name: " + this.name + '\n' + "Cost: " + this.cost + '\n' + "Date: " + this.date;
+
+        }
     }
 }
