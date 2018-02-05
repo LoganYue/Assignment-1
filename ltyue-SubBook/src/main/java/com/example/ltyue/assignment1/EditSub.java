@@ -17,7 +17,7 @@ public class EditSub extends AppCompatActivity {
     private Intent intent;
     private String name;
     private String date;
-    private int cost;
+    private String cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,7 @@ public class EditSub extends AppCompatActivity {
         arrayIndex = intent.getStringExtra("arrayIndex");
         name = intent.getStringExtra("name");
         date = intent.getStringExtra("date");
-        cost = Integer.parseInt(intent.getStringExtra("cost"));
-//        gsonSub = intent.getStringExtra("subString");
-
-//        Gson gson = new Gson();
-//        sub = gson.fromJson(gsonSub, Subscription.class);
+        cost = intent.getStringExtra("cost");
 
 
         nameBox = (EditText) findViewById(R.id.nameBox);
@@ -40,7 +36,7 @@ public class EditSub extends AppCompatActivity {
         dateBox = (EditText) findViewById(R.id.dateBox);
 
         nameBox.setText(name);
-        costBox.setText(intent.getStringExtra("cost"));
+        costBox.setText(cost);
         dateBox.setText(date);
 
 
@@ -58,12 +54,22 @@ public class EditSub extends AppCompatActivity {
                 main.putExtra("cost", newCost);
                 main.putExtra("date", newDate);
                 main.putExtra("arrayIndex", arrayIndex);
+//                main.putExtra("delete", "0");
                 setResult(2,main);
                 finish();
 
 
             }
         });
+
+//        final Button deleteSub = findViewById(R.id.delete);
+//
+//        deleteSub.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v) {
+//                Intent main = new Intent();
+//                main.putExtra("delete", "0");
+//            }
+//        });
 
     }
 

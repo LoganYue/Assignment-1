@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Subscription> subList = new ArrayList<Subscription>();
     private ArrayAdapter<Subscription> adapter;
 
-    private ArrayList<String> subStrings = new ArrayList<String>();
+//    private ArrayList<String> subStrings = new ArrayList<String>();
 
     private String gsonSub;
 
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         Object sub = oldSubList.getItemAtPosition(position);
-                        Subscription editSub = (Subscription) sub;
                         Intent intent = new Intent(view.getContext(), EditSub.class);
 
                         TextView test = findViewById(R.id.TotalCost);
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 //                            android.R.layout.simple_list_item_1, subStrings);
                     adapter = new ArrayAdapter<Subscription>(this,
                             android.R.layout.simple_list_item_1, subList);
-//
+
                     oldSubList.setAdapter(adapter);
                 }
 
@@ -100,15 +99,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (requestCode == EDIT_SUB) {
-            Intent intent = getIntent();
-            String name = intent.getStringExtra("name");
-            String date = intent.getStringExtra("date");
-            int cost = Integer.parseInt(intent.getStringExtra("cost"));
-            int arrayIndex = Integer.parseInt(intent.getStringExtra("arrayIndex"));
+            String name = data.getStringExtra("name");
+            String date = data.getStringExtra("date");
+            int cost = Integer.parseInt(data.getStringExtra("cost"));
+            int arrayIndex = Integer.parseInt(data.getStringExtra("arrayIndex"));
 
+            Object sub = oldSubList.getItemAtPosition(arrayIndex);
+            Subscription editSub = (Subscription) sub;
 
+            editSub.setName(name);
+            editSub.setDate(date);
+            editSub.setCost(cost);
 
+            subList.set(arrayIndex, editSub);
+            adapter = new ArrayAdapter<Subscription>(this,
+                    android.R.layout.simple_list_item_1, subList);
 
+            oldSubList.setAdapter(adapter);
         }
 
     }
