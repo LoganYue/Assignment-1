@@ -99,19 +99,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (requestCode == EDIT_SUB) {
-            String name = data.getStringExtra("name");
-            String date = data.getStringExtra("date");
-            int cost = Integer.parseInt(data.getStringExtra("cost"));
+
             int arrayIndex = Integer.parseInt(data.getStringExtra("arrayIndex"));
+            int delete = Integer.parseInt(data.getStringExtra("delete"));
 
-            Object sub = oldSubList.getItemAtPosition(arrayIndex);
-            Subscription editSub = (Subscription) sub;
+            if (delete == 1){
+                subList.remove(arrayIndex);
+            } else {
 
-            editSub.setName(name);
-            editSub.setDate(date);
-            editSub.setCost(cost);
+                String name = data.getStringExtra("name");
+                String date = data.getStringExtra("date");
+                int cost = Integer.parseInt(data.getStringExtra("cost"));
+                Object sub = oldSubList.getItemAtPosition(arrayIndex);
+                Subscription editSub = (Subscription) sub;
 
-            subList.set(arrayIndex, editSub);
+                editSub.setName(name);
+                editSub.setDate(date);
+                editSub.setCost(cost);
+
+                subList.set(arrayIndex, editSub);
+            }
+
             adapter = new ArrayAdapter<Subscription>(this,
                     android.R.layout.simple_list_item_1, subList);
 
@@ -120,5 +128,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+//    private void updateScreen(){
+//
+//    }
 
 }

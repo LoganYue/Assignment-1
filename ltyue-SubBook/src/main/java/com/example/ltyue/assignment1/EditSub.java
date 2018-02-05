@@ -54,7 +54,7 @@ public class EditSub extends AppCompatActivity {
                 main.putExtra("cost", newCost);
                 main.putExtra("date", newDate);
                 main.putExtra("arrayIndex", arrayIndex);
-//                main.putExtra("delete", "0");
+                main.putExtra("delete", "0");
                 setResult(2,main);
                 finish();
 
@@ -62,14 +62,17 @@ public class EditSub extends AppCompatActivity {
             }
         });
 
-//        final Button deleteSub = findViewById(R.id.delete);
-//
-//        deleteSub.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View v) {
-//                Intent main = new Intent();
-//                main.putExtra("delete", "0");
-//            }
-//        });
+        final Button deleteSub = findViewById(R.id.delete);
+
+        deleteSub.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                Intent main = new Intent();
+                main.putExtra("delete", "1");
+                main.putExtra("arrayIndex", arrayIndex);
+                setResult(2,main);
+                finish();
+            }
+        });
 
     }
 
