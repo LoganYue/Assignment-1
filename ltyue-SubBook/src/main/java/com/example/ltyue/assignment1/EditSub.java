@@ -13,9 +13,7 @@ public class EditSub extends AppCompatActivity {
     private EditText dateBox;
     private EditText costBox;
     private EditText commentBox;
-    private Subscription sub;
-    private String gsonSub;
-    private int arrayIndex;
+    private String arrayIndex;
     private Intent intent;
     private String name;
     private String date;
@@ -27,7 +25,7 @@ public class EditSub extends AppCompatActivity {
         setContentView(R.layout.activity_edit_sub);
 
         Intent intent = getIntent();
-//        arrayIndex = Integer.parseInt(intent.getStringExtra("arrayIndex"));
+        arrayIndex = intent.getStringExtra("arrayIndex");
         name = intent.getStringExtra("name");
         date = intent.getStringExtra("date");
         cost = Integer.parseInt(intent.getStringExtra("cost"));
@@ -52,8 +50,16 @@ public class EditSub extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 String newName = nameBox.getText().toString();
-                int newCost = Integer.parseInt(costBox.getText().toString());
+                String newCost = costBox.getText().toString();
                 String newDate = dateBox.getText().toString();
+
+                Intent main = new Intent();
+                main.putExtra("name", newName);
+                main.putExtra("cost", newCost);
+                main.putExtra("date", newDate);
+                main.putExtra("arrayIndex", arrayIndex);
+                setResult(2,main);
+                finish();
 
 
             }

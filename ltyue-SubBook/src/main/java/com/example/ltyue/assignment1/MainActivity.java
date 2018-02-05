@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("name", ((Subscription) sub).getName());
                         intent.putExtra("cost", String.valueOf(((Subscription) sub).getCost()));
                         intent.putExtra("date", ((Subscription) sub).getDate());
-//                        intent.putExtra("arrayIndex", position);
+                        intent.putExtra("arrayIndex", String.valueOf(position));
 //                        Gson gson = new Gson();
 //                        gsonSub = gson.toJson(editSub);
 //                        intent.putExtra("subString", gsonSub);
@@ -100,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (requestCode == EDIT_SUB) {
+            Intent intent = getIntent();
+            String name = intent.getStringExtra("name");
+            String date = intent.getStringExtra("date");
+            int cost = Integer.parseInt(intent.getStringExtra("cost"));
+            int arrayIndex = Integer.parseInt(intent.getStringExtra("arrayIndex"));
+
+
+
 
         }
 
