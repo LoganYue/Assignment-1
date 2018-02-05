@@ -42,7 +42,7 @@ public class EditSub extends AppCompatActivity {
         dateBox = (EditText) findViewById(R.id.dateBox);
 
         nameBox.setText(name);
-        costBox.setText(cost);
+        costBox.setText(intent.getStringExtra("cost"));
         dateBox.setText(date);
 
 
