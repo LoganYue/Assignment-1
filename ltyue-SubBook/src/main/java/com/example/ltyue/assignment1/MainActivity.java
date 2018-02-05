@@ -1,5 +1,6 @@
 package com.example.ltyue.assignment1;
 
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -22,9 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Subscription> subList = new ArrayList<Subscription>();
     private ArrayAdapter<Subscription> adapter;
 
-//    private ArrayList<String> subStrings = new ArrayList<String>();
-
-    private String gsonSub;
+    private static final String FILENAME = "newfile.sav";
 
     public static final int EDIT_SUB = 2;
 
@@ -53,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("date", ((Subscription) sub).getDate());
                         intent.putExtra("comment", ((Subscription) sub).getComment());
                         intent.putExtra("arrayIndex", String.valueOf(position));
-//                        Gson gson = new Gson();
-//                        gsonSub = gson.toJson(editSub);
-//                        intent.putExtra("subString", gsonSub);
-//                        intent.putExtra("arrayIndex", position);
 
                         startActivityForResult(intent, EDIT_SUB);
                     }
@@ -153,5 +146,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }
