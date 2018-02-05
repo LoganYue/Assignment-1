@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(view.getContext(), EditSub.class);
 
                         TextView test = findViewById(R.id.TotalCost);
+
 
                         intent.putExtra("name", ((Subscription) sub).getName());
                         intent.putExtra("cost", String.valueOf(((Subscription) sub).getCost()));
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle subData = data.getExtras();
                 if (subData != null) {
                     String name = subData.getString("subName");
-                    String date = subData.getString("subDate");
+                    Date date = Date.valueOf(subData.getString("subDate"));
                     double cost = subData.getDouble("subCost");
                     String comment = subData.getString("subComment");
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
 
                 String name = data.getStringExtra("name");
-                String date = data.getStringExtra("date");
+                Date date = Date.valueOf(data.getStringExtra("date"));
                 double cost = Double.parseDouble(data.getStringExtra("cost"));
                 String comment = data.getStringExtra("comment");
                 Object sub = oldSubList.getItemAtPosition(arrayIndex);

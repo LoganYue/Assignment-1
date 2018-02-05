@@ -1,5 +1,7 @@
 package com.example.ltyue.assignment1;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,19 +11,19 @@ import java.util.Date;
 public class Subscription {
 
     private String name;
-    private String date;
+    private Date date;
     private double cost;
     private String comment = "";
 
     //default constructor
-    public Subscription(String subName, String date, double cost){
+    public Subscription(String subName, Date date, double cost){
         this.name = subName;
         this.date = date;
         this.cost = cost;
     }
 
     //constructor w/ comment
-    public Subscription(String subName, String date, double cost, String comment){
+    public Subscription(String subName, Date date, double cost, String comment){
         this.name = subName;
         this.date = date;
         this.cost = cost;
@@ -37,10 +39,12 @@ public class Subscription {
     }
 
     public String getDate() {
-        return date;
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String stringDate = df.format(this.date);
+        return stringDate;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
