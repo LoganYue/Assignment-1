@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Assignment 1</string>
+    <string name="add_sub">Add Subscription</string>
+    <string name="subs">Subscriptions</string>
+    <string name="cost">Cost:</string>
+    <string name="total">Total:</string>
+    <string name="sub_name">Subscription Name</string>
+    <string name="sub_cost">Subscription Cost</string>
+    <string name="sub_date">YYYY-MM-DD</string>
+    <string name="sub_comment">Comment</string>
+    <string name="create_sub">Create Subscription</string>
+    <string name="title_activity_edit_sub">editSub</string>
+    <string name="saveChanges">Save Changes</string>
+    <string name="delete">Delete Subscription</string>
+</resources>
