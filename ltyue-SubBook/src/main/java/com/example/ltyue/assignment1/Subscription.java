@@ -27,41 +27,40 @@ public class Subscription {
         this.cost = cost;
         this.comment = comment;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public String getDate(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public int getCost(){
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getCost() {
         return cost;
     }
 
-    public String getComment(){
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public String getComment() {
         return comment;
     }
 
-    public void changeName(String name){
-        this.name = name;
-        return;
-    }
-
-    public void changeDate(String date){
-        this.date = date;
-        return;
-    }
-
-    public void changeCost(int cost){
-        this.cost = cost;
-        return;
-    }
-
-    public void changeComment(String comment){
+    public void setComment(String comment) {
         this.comment = comment;
-        return;
     }
+
+
 
     @Override
     public String toString() {

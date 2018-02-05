@@ -45,8 +45,10 @@ public class MainActivity extends AppCompatActivity {
                         Subscription editSub = (Subscription) sub;
                         Intent intent = new Intent(view.getContext(), EditSub.class);
 
+                        TextView test = findViewById(R.id.TotalCost);
+
                         intent.putExtra("name", ((Subscription) sub).getName());
-                        intent.putExtra("cost", ((Subscription) sub).getCost());
+                        intent.putExtra("cost", (((Subscription) sub).getCost()));
                         intent.putExtra("date", ((Subscription) sub).getDate());
 //                        intent.putExtra("arrayIndex", position);
 //                        Gson gson = new Gson();

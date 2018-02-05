@@ -28,7 +28,9 @@ public class EditSub extends AppCompatActivity {
 
         Intent intent = getIntent();
 //        arrayIndex = Integer.parseInt(intent.getStringExtra("arrayIndex"));
-        name = intent.getStringExtra("subName");
+        name = intent.getStringExtra("name");
+        date = intent.getStringExtra("date");
+        cost = Integer.parseInt(intent.getStringExtra("cost"));
 //        gsonSub = intent.getStringExtra("subString");
 
 //        Gson gson = new Gson();
