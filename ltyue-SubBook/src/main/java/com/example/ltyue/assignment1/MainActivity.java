@@ -89,10 +89,7 @@ public class MainActivity extends AppCompatActivity {
 //                    subStrings.add("Name: " + name + '\n' + "Cost: " + cost + '\n' + "Date: " + date);
 //                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                            android.R.layout.simple_list_item_1, subStrings);
-                    adapter = new ArrayAdapter<Subscription>(this,
-                            android.R.layout.simple_list_item_1, subList);
-
-                    oldSubList.setAdapter(adapter);
+                    updateScreen();
                 }
 
             }
@@ -120,16 +117,30 @@ public class MainActivity extends AppCompatActivity {
                 subList.set(arrayIndex, editSub);
             }
 
-            adapter = new ArrayAdapter<Subscription>(this,
-                    android.R.layout.simple_list_item_1, subList);
-
-            oldSubList.setAdapter(adapter);
+            updateScreen();
         }
 
     }
 
-//    private void updateScreen(){
-//
-//    }
+    private void updateScreen() {
+
+        int totalCost = 0;
+        TextView costBox = findViewById(R.id.TotalCost);
+
+        for (int i = 0; i < subList.size(); i++){
+            Subscription sub = subList.get(i);
+            totalCost += sub.getCost();
+
+        }
+
+        costBox.setText(String.valueOf(totalCost));
+
+        adapter = new ArrayAdapter<Subscription>(this,
+                android.R.layout.simple_list_item_1, subList);
+        oldSubList.setAdapter(adapter);
+
+
+
+    }
 
 }
