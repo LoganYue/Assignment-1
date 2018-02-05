@@ -42,6 +42,8 @@ public class EditSub extends AppCompatActivity {
         dateBox = (EditText) findViewById(R.id.dateBox);
 
         nameBox.setText(name);
+        costBox.setText(cost);
+        dateBox.setText(date);
 
 
         final Button editSub = findViewById(R.id.saveChanges);
