@@ -11,36 +11,36 @@ public class Subscription {
     private String name;
     private String date;
     private int cost;
-    private String comment;
+    private String comment = "default comment";
 
     //default constructor
-    public Subscription(String sub_name, String date, int cost){
-        this.name = sub_name;
+    public Subscription(String subName, String date, int cost){
+        this.name = subName;
         this.date = date;
         this.cost = cost;
     }
 
     //constructor w/ comment
-    public Subscription(String sub_name, String date, int cost, String comment){
-        this.name = sub_name;
+    public Subscription(String subName, String date, int cost, String comment){
+        this.name = subName;
         this.date = date;
         this.cost = cost;
         this.comment = comment;
     }
     public String getName(){
-        return this.name;
+        return name;
     }
 
     public String getDate(){
-        return this.date;
+        return date;
     }
 
     public int getCost(){
-        return this.cost;
+        return cost;
     }
 
     public String getComment(){
-        return this.comment;
+        return comment;
     }
 
     public void changeName(String name){
@@ -61,5 +61,10 @@ public class Subscription {
     public void changeComment(String comment){
         this.comment = comment;
         return;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name + '\n' + "Cost: " + this.cost + '\n' + "Date: " + this.date;
     }
 }
